@@ -1,5 +1,5 @@
 const utils=require('./utils');
-const fs = require("fs-extra");
+const fs = require("fs");
 const path = require("path");
 const vscode=require('vscode');
 
@@ -7,13 +7,8 @@ const directories = new Array('.vscode', 'bin', 'lib', 'src');
 
 
 const createFolders = (location)=> {
-    directories.forEach((dir) => {
-        try {
-            fs.ensureDirSync(path.join(location, dir));
-        }
-        catch (err) {
-            console.error(err);
-        }
+    directories.forEach( dir => {
+        fs.mkdirSync(path.join(location, dir));
 	});
 }
 const createC51Files=(location)=> {
@@ -28,7 +23,7 @@ const createC51Files=(location)=> {
         const mainPath = path.join(sourcePath, 'templates', 'main.c');
         const C51sPath = path.join(sourcePath, 'templates', 'C51S.LIB');
 		const STARTUPPath = path.join(sourcePath, 'templates', 'STARTUP.A51');
-        fs.writeFileSync(path.join(location, '.vscode', 'tasks.json'),tasksPath);
+        fs.writeFileSync(path.join(location, '.vscode', 'tasks.json'),fs.readFileSync(tasksPath));
         fs.writeFileSync(path.join(location, 'lib', 'C51S.LIB'),fs.readFileSync(C51sPath));
         fs.writeFileSync(path.join(location, 'lib', 'STARTUP.A51'),fs.readFileSync(STARTUPPath));
 		fs.writeFileSync(path.join(location, '.vscode', 'settings.json'),fs.readFileSync(settingsPath));
@@ -42,12 +37,12 @@ const createC51Files=(location)=> {
         console.error(err);
     }
 }
-const createProject= ()=> {
-    const path=require('./utils').getWorkspacePath();
-    createFolders(path);
-    createC51Files(path);
+const createProject =()=> {
+    const workpath=require('./utils').getWorkspacePath();
+    createFolders(workpath);
+    createC51Files(workpath);
 }
 
 module.exports = {
-    createProject
+    createProject,
 }

@@ -1,9 +1,9 @@
 {
 	"name": "c51-project-generator",
 	"displayName": "C51 Project Generator",
-	"description": "快速构建C51项目.",
+	"description": "快速构建C51项目,简单易上手.",
 	"publisher": "MoonAndHaze",
-	"version": "0.9.5",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.47.0"
 	},
@@ -11,7 +11,7 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:CPG.createQuickC51",
+		"onCommand:CPG.createQuickC51",
 		"*"
 	],
 	"icon": "image/icon.png",
@@ -21,20 +21,18 @@
 			"type": "object",
 			"title": "C51 Project Generator",
 			"properties": {
-				"Keil C51.Installation Path":{
-					"type":"string",
+				"Keil C51.Installation Path": {
+					"type": "string",
 					"description": "Keil C51 安装路径",
 					"scope": "resource",
-					"default":"C:\\Keil_v5\\C51"
+					"default": "C:\\Keil_v5\\C51"
 				}
 			}
 		},
-		"commands": [
-			{
-				"command": "CPG.createQuickC51",
-				"title": "%CPG.commands.createQuickC51.tiltle%"
-			}
-		]
+		"commands": [{
+			"command": "CPG.createQuickC51",
+			"title": "%CPG.commands.createQuickC51.tiltle%"
+		}]
 	},
 	"scripts": {
 		"lint": "eslint .",
@@ -42,19 +40,19 @@
 		"test": "node ./test/runTest.js"
 	},
 	"repository": {
-        "type": "git",
-        "url": "https://hub.fastgit.org/MoonAndHaze/Convenient-And-Fast.git"
-    },
+		"type": "git",
+		"url": "https://hub.fastgit.org/MoonAndHaze/C51ProjectGenerator.git"
+	},
 	"devDependencies": {
-        "@types/vscode": "^1.47.0",
-        "@types/glob": "^7.1.1",
-        "@types/mocha": "^7.0.2",
-        "@types/node": "^13.11.0",
-        "eslint": "^6.8.0",
-        "glob": "^7.1.6",
+		"@types/vscode": "^1.47.0",
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.11.0",
+		"eslint": "^6.8.0",
+		"glob": "^7.1.6",
 		"mocha": "^7.1.2",
-        "typescript": "^3.8.3",
-        "vscode-test": "^1.3.0"
-    }
+		"typescript": "^3.8.3",
+		"vscode-test": "^1.3.0"
+	}
 
 }
